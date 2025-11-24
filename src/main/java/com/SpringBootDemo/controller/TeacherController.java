@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.SpringBootDemo.dto.TeacherDto;
 import com.SpringBootDemo.entity.Teacher;
 import com.SpringBootDemo.service.TeacherService;
 
@@ -57,9 +58,9 @@ public class TeacherController {
 	// ----------------------create/save-------------------------
 
 	@PostMapping("/save")
-	public Teacher save(@RequestBody Teacher teacher) {
-		System.out.println(teacher.getName());
-		return service.saveTeacher(teacher);
+	public Teacher save(@RequestBody TeacherDto dto) {
+		System.out.println(dto.getName());
+		return service.saveTeacher(dto);
 
 	}
 
