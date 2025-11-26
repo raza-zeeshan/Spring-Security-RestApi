@@ -1,12 +1,15 @@
 package com.SpringBootDemo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.SpringBootDemo.dto.ResponseStructure;
 import com.SpringBootDemo.dto.TeacherDto;
 import com.SpringBootDemo.entity.Teacher;
 import com.SpringBootDemo.service.TeacherService;
@@ -58,9 +61,15 @@ public class TeacherController {
 	// ----------------------create/save-------------------------
 
 	@PostMapping("/save")
-	public Teacher save(@RequestBody TeacherDto dto) {
+	public ResponseEntity<ResponseStructure<Teacher>> save(@RequestBody TeacherDto dto) {
 		System.out.println(dto.getName());
-		return service.saveTeacher(dto);
+		Teacher tch = service.saveTeacher(dto);
+
+		ResponseStructure<Teacher> rsp = new ResponseStructure<Teacher>();
+		rsp.setStatus(HttpStatus.OK);
+		rsp.setMsg("SUCCESSFULL");
+		rsp.setData(tch);
+		return new ResponseEntity(rsp, HttpStatus.CREATED);
 
 	}
 
