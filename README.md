@@ -10,13 +10,11 @@ This project is a Spring Security REST API built with Spring Boot 3.5.7, providi
 - **JPA Implementation:** Spring Data JPA
 - **Web Framework:** Spring Web
 
-
 ## Features
 - User registration and authentication
 - Secure REST endpoints
 - Role-based access control
 - JWT for stateless authentication
-
 
 ## Getting Started
 1. **Clone the repository**:
